@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react"
 import { MessageContext } from "../MessageContext"
 
-export default function ChatBox({ isWriting, setIsWriting }) {
+export default function ChatBox({ user, isWriting, setIsWriting }) {
 	const [text, setText] = useState("")
 	const [selfTyping, setSelfTyping] = useState(false)
 	
@@ -15,7 +15,7 @@ export default function ChatBox({ isWriting, setIsWriting }) {
 	}, [isWriting])
 
 	function sendMessage(event) {
-		setMessages(previousState => [...previousState, {message: text}])
+		setMessages(previousState => [...previousState, {user, message: text}])
 		setText("")
 	}
 

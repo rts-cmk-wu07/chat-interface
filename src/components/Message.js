@@ -1,7 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 
-export default function Message({text}) {
+export default function Message({text, user, thisIs}) {
+	const isMe = thisIs === user
 	
 	const styles = {
 		container: css`
