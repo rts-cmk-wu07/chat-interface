@@ -6,6 +6,9 @@ import { OnlineContext } from '../OnlineContext'
 export default function Message({text, user, thisIs}) {
 	const { isOnline } = useContext(OnlineContext)
 	const isMe = thisIs === user
+	var isOtherOnline = false
+
+	isOnline.forEach(item => item.user === user ? isOtherOnline = item.isOnline : null)
 	
 	const styles = {
 		container: css`
@@ -16,7 +19,7 @@ export default function Message({text, user, thisIs}) {
 				border-radius: 50%;
 				height: 30px;
 				width: 30px;
-				background-color: ${isOnline ? "green" : "yellow"};
+				background-color: ${isOtherOnline ? "green" : "yellow"};
 			`,
 		text: css`
 				background-color: lightblue;

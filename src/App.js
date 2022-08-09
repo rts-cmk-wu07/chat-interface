@@ -6,9 +6,17 @@ import { OnlineContext } from './OnlineContext';
 import { MessageContext } from './MessageContext';
 
 function App() {
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState([{user: "user1", message: "test"}, {user: "user2", message: "bleh"}])
   const [isWriting, setIsWriting] = useState(false)
-  const [isOnline, setIsOnline] = useState(false)
+  const [isOnline, setIsOnline] = useState([
+    {
+      "user": "user1",
+      "isOnline": false
+    },
+    {
+      "user": "user2",
+      "isOnline": false
+    }])
 
   return (
     <OnlineContext.Provider value={{isOnline, setIsOnline}}>
