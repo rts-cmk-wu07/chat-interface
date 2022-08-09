@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from "react"
+import Message from './components/Message';
+import ChatBox from './components/ChatBox';
+import {MessageContext} from './MessageContext';
 
 function App() {
+  const [messages, setMessages] = useState([{message: "tæsd"}])
+  const [isWriting, setIsWriting] = useState(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MessageContext.Provider value={{messages, setMessages}}>
+      <div className="App">
+        <section>
+          <section>
+            {messages.map(message => <Message text={message.message} />)}
+          </section>
+          <section>
+            <ChatBox isWriting={isWriting} setIsWriting={setIsWriting} />
+          </section>
+        </section>
+        <section>
+          <section>
+            {messages.map(message => <Message text={message.message} />)}
+          </section>
+          <section>
+            <ChatBox isWriting={isWriting} setIsWriting={setIsWriting} />
+          </section>
+        </section>
+      </div>
+    </MessageContext.Provider>
   );
 }
 
