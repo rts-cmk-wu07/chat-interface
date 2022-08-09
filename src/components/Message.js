@@ -1,7 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { useContext } from 'react'
+import { OnlineContext } from '../OnlineContext'
 
 export default function Message({text, user, thisIs}) {
+	const { isOnline } = useContext(OnlineContext)
 	const isMe = thisIs === user
 	
 	const styles = {
@@ -13,7 +16,7 @@ export default function Message({text, user, thisIs}) {
 				border-radius: 50%;
 				height: 30px;
 				width: 30px;
-				background-color: goldenrod;
+				background-color: ${isOnline ? "green" : "yellow"};
 			`,
 		text: css`
 				background-color: lightblue;
